@@ -5,6 +5,10 @@ import moment from 'moment';
 import _ from 'lodash-es';
 
 let _allData = sgt.concat(shoac).concat(sso);
+_allData = _allData.filter(t=>{
+  t.date = t.date.filter(d=> new Date(d) > new Date());
+  return t.date.length;
+});
 _allData.sort((t1, t2) => t1.date > t2.date ? 1 : -1);
 
 export default {
